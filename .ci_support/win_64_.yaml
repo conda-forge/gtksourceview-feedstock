@@ -1,0 +1,20 @@
+c_compiler:
+- vs2022
+c_stdlib:
+- vs
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge main
+expat:
+- '2'
+fontconfig:
+- '2'
+glib:
+- '2'
+libxml2_devel:
+- '2.15'
+target_platform:
+- win-64
+zlib:
+- '1'
