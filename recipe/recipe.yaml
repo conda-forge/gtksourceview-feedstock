@@ -11,7 +11,7 @@ source:
   url: "https://download.gnome.org/sources/${{ name }}/${{ version_majmin }}/${{ name }}-${{ version }}.tar.xz"
   sha256: 051a78fe38f793328047e5bcd6d855c6425c0b480c20d9432179e356742c6ac0
 build:
-  number: 0
+  number: 1
   script:
     - if: win
       then: |
@@ -26,7 +26,12 @@ build:
           builddir
         ninja -v -C builddir -j %CPU_COUNT%
         ninja -C builddir install -j %CPU_COUNT%
-      else: |
+    - if: osx
+      then: |
+        # Define _DARWIN_C_SOURCE to expose POSIX.1-2008 functions like strnlen
+        export CFLAGS="${CFLAGS} -D_DARWIN_C_SOURCE"
+    - if: unix
+      then: |
         meson setup ${MESON_ARGS} \
             --prefix=$PREFIX \
             --default-library=shared \
