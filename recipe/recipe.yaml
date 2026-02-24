@@ -2,16 +2,16 @@
 schema_version: 1
 context:
   name: gtksourceview
-  version: 5.18.0
+  version: "5.19.0"
   version_majmin: ${{ (version | split('.'))[:2] | join('.') }}
 package:
   name: ${{ name|lower }}
   version: ${{ version }}
 source:
   url: "https://download.gnome.org/sources/${{ name }}/${{ version_majmin }}/${{ name }}-${{ version }}.tar.xz"
-  sha256: 051a78fe38f793328047e5bcd6d855c6425c0b480c20d9432179e356742c6ac0
+  sha256: 242bf2c3dc51c44402294b584141399afe7cf87bfacf2b958685cece964301c5
 build:
-  number: 1
+  number: 0
   script:
     - if: win
       then: |
