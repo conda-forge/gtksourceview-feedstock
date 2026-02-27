@@ -67,6 +67,12 @@ requirements:
     - zlib
     - if: unix
       then: pango
+  run:
+    - libgraphene
+    - cairo
+    - gdk-pixbuf
+    - libintl
+    - pcre2
   run_exports:
     - ${{ pin_subpackage('gtksourceview', upper_bound='x.x') }}
   ignore_run_exports:
@@ -74,6 +80,7 @@ requirements:
       - libexpat
       - adwaita-icon-theme
       - libzlib
+      - libfreetype6
 tests:
   - package_contents:
       files:
