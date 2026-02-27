@@ -10,6 +10,8 @@ expat:
 - '2'
 fontconfig:
 - '2'
+freetype:
+- '2'
 glib:
 - '2'
 libxml2_devel:
