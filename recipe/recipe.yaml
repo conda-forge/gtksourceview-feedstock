@@ -58,6 +58,7 @@ requirements:
   host:
     - expat
     - fontconfig
+    - freetype
     - fribidi
     - glib
     - gobject-introspection
