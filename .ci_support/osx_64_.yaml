@@ -18,10 +18,12 @@ expat:
 - '2'
 fontconfig:
 - '2'
+freetype:
+- '2'
 glib:
 - '2'
-libxml2_devel:
-- '2.15'
+libxml2:
+- '2.13'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 pango:

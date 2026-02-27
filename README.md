@@ -1,5 +1,5 @@
-About gtksourceview-feedstock
-=============================
+About gtksourceview4-feedstock
+==============================
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gtksourceview-feedstock/blob/main/LICENSE.txt)
 
@@ -70,53 +70,53 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-gtksourceview-green.svg)](https://anaconda.org/conda-forge/gtksourceview) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gtksourceview.svg)](https://anaconda.org/conda-forge/gtksourceview) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gtksourceview.svg)](https://anaconda.org/conda-forge/gtksourceview) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gtksourceview.svg)](https://anaconda.org/conda-forge/gtksourceview) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-gtksourceview4-green.svg)](https://anaconda.org/conda-forge/gtksourceview4) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gtksourceview4.svg)](https://anaconda.org/conda-forge/gtksourceview4) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gtksourceview4.svg)](https://anaconda.org/conda-forge/gtksourceview4) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gtksourceview4.svg)](https://anaconda.org/conda-forge/gtksourceview4) |
 
-Installing gtksourceview
-========================
+Installing gtksourceview4
+=========================
 
-Installing `gtksourceview` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `gtksourceview4` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `gtksourceview` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `gtksourceview4` can be installed with `conda`:
 
 ```
-conda install gtksourceview
-```
-
-or with `mamba`:
-
-```
-mamba install gtksourceview
-```
-
-It is possible to list all of the versions of `gtksourceview` available on your platform with `conda`:
-
-```
-conda search gtksourceview --channel conda-forge
+conda install gtksourceview4
 ```
 
 or with `mamba`:
 
 ```
-mamba search gtksourceview --channel conda-forge
+mamba install gtksourceview4
+```
+
+It is possible to list all of the versions of `gtksourceview4` available on your platform with `conda`:
+
+```
+conda search gtksourceview4 --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search gtksourceview4 --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search gtksourceview --channel conda-forge
+mamba repoquery search gtksourceview4 --channel conda-forge
 
-# List packages depending on `gtksourceview`:
-mamba repoquery whoneeds gtksourceview --channel conda-forge
+# List packages depending on `gtksourceview4`:
+mamba repoquery whoneeds gtksourceview4 --channel conda-forge
 
-# List dependencies of `gtksourceview`:
-mamba repoquery depends gtksourceview --channel conda-forge
+# List dependencies of `gtksourceview4`:
+mamba repoquery depends gtksourceview4 --channel conda-forge
 ```
 
 
@@ -161,17 +161,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating gtksourceview-feedstock
-================================
+Updating gtksourceview4-feedstock
+=================================
 
-If you would like to improve the gtksourceview recipe or build a new
+If you would like to improve the gtksourceview4 recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/gtksourceview-feedstock are
+Note that all branches in the conda-forge/gtksourceview4-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks, and branches in the main repository should only be used to
 build distinct package versions.
@@ -186,7 +186,5 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
-* [@danyeaw](https://github.com/danyeaw/)
-* [@pkgw](https://github.com/pkgw/)
-* [@ryanvolz](https://github.com/ryanvolz/)
+* [@noamraph](https://github.com/noamraph/)
 

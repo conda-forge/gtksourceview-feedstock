@@ -10,10 +10,12 @@ expat:
 - '2'
 fontconfig:
 - '2'
+freetype:
+- '2'
 glib:
 - '2'
-libxml2_devel:
-- '2.15'
+libxml2:
+- '2.13'
 target_platform:
 - win-64
 zlib:
