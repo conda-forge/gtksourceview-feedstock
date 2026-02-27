@@ -36,7 +36,7 @@ build:
             --prefix=$PREFIX \
             --default-library=shared \
             --wrap-mode=nofallback \
-            -Dintrospection=enabled \
+            -Dintrospection=${{ "enabled" if build_platform == target_platform else "disabled" }} \
             -Ddocumentation=false \
             -Dvapi=false \
             builddir
