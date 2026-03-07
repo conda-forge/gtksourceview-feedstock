@@ -2,16 +2,16 @@
 schema_version: 1
 context:
   name: gtksourceview
-  version: 5.18.0
+  version: 4.8.4
   version_majmin: ${{ (version | split('.'))[:2] | join('.') }}
 package:
-  name: ${{ name|lower }}
+  name: gtksourceview4
   version: ${{ version }}
 source:
   url: "https://download.gnome.org/sources/${{ name }}/${{ version_majmin }}/${{ name }}-${{ version }}.tar.xz"
-  sha256: 051a78fe38f793328047e5bcd6d855c6425c0b480c20d9432179e356742c6ac0
+  sha256: 7ec9d18fb283d1f84a3a3eff3b7a72b09a10c9c006597b3fbabbb5958420a87d
 build:
-  number: 1
+  number: 0
   script:
     - if: win
       then: |
@@ -20,8 +20,6 @@ build:
           --default-library=shared ^
           --wrap-mode=nofallback ^
           --buildtype=release ^
-          -Dintrospection=enabled ^
-          -Ddocumentation=false ^
           -Dvapi=false ^
           builddir
         ninja -v -C builddir -j %CPU_COUNT%
@@ -36,8 +34,6 @@ build:
             --prefix=$PREFIX \
             --default-library=shared \
             --wrap-mode=nofallback \
-            -Dintrospection=enabled \
-            -Ddocumentation=false \
             -Dvapi=false \
             builddir
         ninja -v -C builddir -j ${CPU_COUNT}
@@ -54,6 +50,8 @@ requirements:
     - meson
     - ninja
     - pkg-config
+    - freetype
+    - harfbuzz
     - gobject-introspection
   host:
     - expat
@@ -61,8 +59,8 @@ requirements:
     - fribidi
     - glib
     - gobject-introspection
-    - gtk4
-    - libxml2-devel
+    - gtk3
+    - libxml2
     - zlib
     - if: unix
       then: pango
@@ -76,14 +74,14 @@ tests:
       files:
         - if: unix
           then:
-            - lib/pkgconfig/gtksourceview-5.pc
+            - lib/pkgconfig/gtksourceview-4.pc
         - if: win
           then:
-            - Library/lib/pkgconfig/gtksourceview-5.pc
-            - Library/lib/gtksourceview-5.lib
+            - Library/lib/pkgconfig/gtksourceview-4.pc
+            - Library/lib/gtksourceview-4.lib
       lib:
         - if: unix
-          then: gtksourceview-5
+          then: gtksourceview-4
 about:
   homepage: https://gitlab.gnome.org/GNOME/gtksourceview
   summary: A GNOME library that extends GtkTextView
@@ -100,5 +98,4 @@ about:
 extra:
   recipe-maintainers:
     - danyeaw
-    - pkgw
-    - ryanvolz
+    - noamraph

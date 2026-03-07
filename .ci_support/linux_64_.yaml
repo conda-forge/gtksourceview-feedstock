@@ -16,10 +16,12 @@ expat:
 - '2'
 fontconfig:
 - '2'
+freetype:
+- '2'
 glib:
 - '2'
-libxml2_devel:
-- '2.15'
+libxml2:
+- '2.13'
 pango:
 - '1'
 target_platform:
