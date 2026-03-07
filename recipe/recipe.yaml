@@ -97,4 +97,5 @@ about:
   repository: https://gitlab.gnome.org/GNOME/gtksourceview
 extra:
   recipe-maintainers:
+    - danyeaw
     - noamraph
