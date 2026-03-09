@@ -32,6 +32,14 @@ build:
         export CFLAGS="${CFLAGS} -D_DARWIN_C_SOURCE"
     - if: unix
       then: |
+        if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" == "1" ]]; then
+          for tool in glib-mkenums glib-genmarshal; do
+              cp -f ${BUILD_PREFIX}/bin/${tool} ${PREFIX}/bin/${tool}
+          done
+          echo '#!/bin/bash' > ${PREFIX}/bin/glib-compile-resources
+          echo "exec ${BUILD_PREFIX}/bin/glib-compile-resources \"\$@\"" >> ${PREFIX}/bin/glib-compile-resources
+          chmod +x ${PREFIX}/bin/glib-compile-resources
+        fi
         meson setup ${MESON_ARGS} \
             --prefix=$PREFIX \
             --default-library=shared \
@@ -55,6 +63,7 @@ requirements:
     - ninja
     - pkg-config
     - gobject-introspection
+    - glib
   host:
     - expat
     - fontconfig
