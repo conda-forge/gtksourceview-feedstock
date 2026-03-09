@@ -39,6 +39,9 @@ build:
           echo '#!/bin/bash' > ${PREFIX}/bin/glib-compile-resources
           echo "exec ${BUILD_PREFIX}/bin/glib-compile-resources \"\$@\"" >> ${PREFIX}/bin/glib-compile-resources
           chmod +x ${PREFIX}/bin/glib-compile-resources
+          echo '#!/bin/bash' > ${PREFIX}/bin/gtk4-update-icon-cache
+          echo 'exit 0' >> ${PREFIX}/bin/gtk4-update-icon-cache
+          chmod +x ${PREFIX}/bin/gtk4-update-icon-cache
         fi
         meson setup ${MESON_ARGS} \
             --prefix=$PREFIX \
