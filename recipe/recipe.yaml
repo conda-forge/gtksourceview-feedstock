@@ -32,11 +32,22 @@ build:
         export CFLAGS="${CFLAGS} -D_DARWIN_C_SOURCE"
     - if: unix
       then: |
+        if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" == "1" ]]; then
+          for tool in glib-mkenums glib-genmarshal; do
+              cp -f ${BUILD_PREFIX}/bin/${tool} ${PREFIX}/bin/${tool}
+          done
+          echo '#!/bin/bash' > ${PREFIX}/bin/glib-compile-resources
+          echo "exec ${BUILD_PREFIX}/bin/glib-compile-resources \"\$@\"" >> ${PREFIX}/bin/glib-compile-resources
+          chmod +x ${PREFIX}/bin/glib-compile-resources
+          echo '#!/bin/bash' > ${PREFIX}/bin/gtk4-update-icon-cache
+          echo 'exit 0' >> ${PREFIX}/bin/gtk4-update-icon-cache
+          chmod +x ${PREFIX}/bin/gtk4-update-icon-cache
+        fi
         meson setup ${MESON_ARGS} \
             --prefix=$PREFIX \
             --default-library=shared \
             --wrap-mode=nofallback \
-            -Dintrospection=enabled \
+            -Dintrospection=${{ "enabled" if build_platform == target_platform else "disabled" }} \
             -Ddocumentation=false \
             -Dvapi=false \
             builddir
@@ -55,9 +66,11 @@ requirements:
     - ninja
     - pkg-config
     - gobject-introspection
+    - glib
   host:
     - expat
     - fontconfig
+    - freetype
     - fribidi
     - glib
     - gobject-introspection
@@ -66,11 +79,20 @@ requirements:
     - zlib
     - if: unix
       then: pango
+  run:
+    - libgraphene
+    - cairo
+    - gdk-pixbuf
+    - libintl
+    - pcre2
+  run_exports:
+    - ${{ pin_subpackage('gtksourceview', upper_bound='x.x') }}
   ignore_run_exports:
     by_name:
       - libexpat
       - adwaita-icon-theme
       - libzlib
+      - libfreetype6
 tests:
   - package_contents:
       files:
