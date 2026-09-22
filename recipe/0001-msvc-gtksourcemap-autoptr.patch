@@ -1,0 +1,32 @@
+From: danyeaw
+Date: Mon, 22 Sep 2026
+Subject: [PATCH] Fix MSVC build: avoid g_autoptr/g_autofree in gtksourcemap.c
+
+g_autoptr and g_autofree are only defined by glib when the compiler
+supports __attribute__((cleanup)), which MSVC cl.exe does not. Replace
+them with explicit g_free/g_object_unref calls.
+---
+ gtksourceview/gtksourcemap.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/gtksourceview/gtksourcemap.c b/gtksourceview/gtksourcemap.c
+--- a/gtksourceview/gtksourcemap.c
++++ b/gtksourceview/gtksourcemap.c
+@@ -960,12 +960,14 @@ gtk_source_map_measure (GtkWidget      *widget,
+ 			    priv->width_right_margin_position != right_margin_position ||
+ 			    priv->width_left_margin != left_margin)
+ 			{
+-				g_autoptr(PangoLayout) layout = NULL;
+-				g_autofree char *text = NULL;
++				PangoLayout *layout = NULL;
++				char *text = NULL;
+ 
+ 				text = g_strnfill (right_margin_position, 'X');
+ 				layout = gtk_widget_create_pango_layout (widget, text);
+ 				pango_layout_get_pixel_size (layout, &priv->width_request, NULL);
++				g_free (text);
++				g_object_unref (layout);
+ 
+ 				/* If left-margin is set, try to balance the right side with the same
+ 				 * amount of additional space to keep it aligned.
+-- 

@@ -10,6 +10,8 @@ package:
 source:
   url: "https://download.gnome.org/sources/${{ name }}/${{ version_majmin }}/${{ name }}-${{ version }}.tar.xz"
   sha256: 3ebce33c781e65590a450ecd3ffade480d8e3135b52ee996f1620d6c7dffbbff
+  patches:
+    - 0001-msvc-gtksourcemap-autoptr.patch
 build:
   number: 0
   script:
