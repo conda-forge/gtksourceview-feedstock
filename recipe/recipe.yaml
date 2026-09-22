@@ -19,7 +19,6 @@ build:
           --prefix=%LIBRARY_PREFIX% ^
           --default-library=shared ^
           --wrap-mode=nofallback ^
-          --buildtype=release ^
           -Dintrospection=enabled ^
           -Ddocumentation=false ^
           -Dvapi=false ^
